@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:qiankun": "ng build --prod --deploy-url http://localhost:8001/",
-    "serve:qiankun": "ng serve --disable-host-check --port 8001 --base-href /angular9 --live-reload false"
+    "build:qiankun": "ng build --prod --base-href /v1 --deploy-url /v1/",
+    "serve:qiankun": "ng serve --disable-host-check --port 8001 --base-href /v1 --live-reload false --deploy-url //localhost:8001/"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +35,6 @@
     "@angular/language-service": "~9.0.2",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",

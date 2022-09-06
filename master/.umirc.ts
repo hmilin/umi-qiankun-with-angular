@@ -9,14 +9,17 @@ export default defineConfig({
       apps: [
         {
           name: 'angular9',
-          entry: 'http://localhost:8001',
-          to: '/angular9',
-          props: {
-            testProp1: 'test1',
-          },
+          entry:
+            process.env.NODE_ENV === 'development'
+              ? 'http://localhost:8001'
+              : '/v1/',
         },
       ],
       prefetch: 'all',
+      sandbox: {
+        strictStyleIsolation: false,
+        experimentalStyleIsolation: true,
+      },
     },
   },
   routes: [
@@ -29,7 +32,7 @@ export default defineConfig({
           component: '@/pages/about',
         },
         {
-          path: 'angular9',
+          path: 'v1',
           microApp: 'angular9',
           microAppProps: {
             autoSetLoading: false,
@@ -45,4 +48,9 @@ export default defineConfig({
     },
   ],
   fastRefresh: {},
+  lessLoader: {
+    modifyVars: {
+      hack: `true; @import "~@/theme.less";`,
+    },
+  },
 });
