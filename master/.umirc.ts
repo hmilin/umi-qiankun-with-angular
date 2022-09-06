@@ -39,6 +39,7 @@ export default defineConfig({
             className: 'appClassName',
             wrapperClassName: 'wrapperClass',
           },
+          wrappers: ['@/components/SubAppWrapper'],
         },
         {
           path: '/',
