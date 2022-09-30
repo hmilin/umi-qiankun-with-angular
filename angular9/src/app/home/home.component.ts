@@ -1,4 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from "@angular/core";
 import { setMasterState } from "src/single-spa/single-spa-props";
 
 const logo = require("src/assets/dashboard-users.svg").default as string;
@@ -9,11 +14,13 @@ declare var require: any;
   selector: "angular9-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   imgUrl = logo;
+  visible = false;
 
-  constructor() {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
@@ -28,5 +35,10 @@ export class HomeComponent implements OnInit {
         mobile: "123456",
       },
     });
+  }
+
+  setDrawerVisible(visible: boolean) {
+    this.visible = visible;
+    this.changeDetectorRef.markForCheck();
   }
 }

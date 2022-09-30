@@ -5,3 +5,9 @@
 
 <h2>向父组件传值</h2>
 <button (click)="updateUser()">发送</button>
+
+<button nz-button (click)="setDrawerVisible(true)">打开侧边栏</button>
+
+<nz-drawer [nzVisible]="visible" (nzOnClose)="setDrawerVisible(false)">
+  <div class="mt-2">drawer body</div>
+</nz-drawer>
